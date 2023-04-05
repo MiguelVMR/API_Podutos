@@ -8,14 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.produtos.api_teste.model.Produto;
-import com.produtos.api_teste.repository.ProdutoRpositorio;
+import com.produtos.api_teste.repository.ProdutoRpositorio_Old;
 
 
 
 @Service
 public class ProdutoService {
     @Autowired
-    private ProdutoRpositorio produtoRepositorio;
+    private ProdutoRpositorio_Old produtoRepositorio;
      /**
      * Método para retornar uma lista de produtos 
      * @return lista de produtos 
