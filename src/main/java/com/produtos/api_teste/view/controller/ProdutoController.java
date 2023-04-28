@@ -1,4 +1,4 @@
-package com.produtos.api_teste.controller;
+package com.produtos.api_teste.view.controller;
 import java.util.List;
 import java.util.Optional;
 
