@@ -8,14 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.produtos.api_teste.model.Produto;
-import com.produtos.api_teste.repository.ProdutoRpositorio_Old;
+import com.produtos.api_teste.repository.ProdutoRpositorio;
 
 
 
 @Service
 public class ProdutoService {
     @Autowired
-    private ProdutoRpositorio_Old produtoRepositorio;
+    private ProdutoRpositorio produtoRepositorio;
      /**
      * Método para retornar uma lista de produtos 
      * @return lista de produtos 
@@ -23,7 +23,7 @@ public class ProdutoService {
     */
     public List<Produto> obterTodos(){
         // Colocar regra caso tenha. 
-        return produtoRepositorio.obterTodos();
+        return produtoRepositorio.findAll();
     }
     
     /**
@@ -33,7 +33,7 @@ public class ProdutoService {
       */
       public Optional <Produto> obterPorId(Integer id){
 
-        return produtoRepositorio.obterPorId(id);  
+        return produtoRepositorio.findById(id);  
     } 
     /**
      * Método para adcionar produto na lista 
@@ -42,7 +42,7 @@ public class ProdutoService {
      */
     public Produto adicionar (Produto produto){
         // Poderia ter alguma regra de negocio para validar o produto.
-        return produtoRepositorio.adicionar(produto);
+        return produtoRepositorio.saveAndFlush(produto);
     }
      /**
      * Metodo para deletar o produto por Id
@@ -50,7 +50,7 @@ public class ProdutoService {
      */
     public void deletar (Integer id){
         // Aqui poderia ter alguma validação
-        produtoRepositorio.deletar(id);
+        produtoRepositorio.deleteById(id);
     }
      /**
      * Metodo para atualziar o produto na lista 
@@ -62,7 +62,7 @@ public class ProdutoService {
         // Ter alguma validação
         produto.setId(id);
 
-        return produtoRepositorio.atualizar(produto); 
+        return produtoRepositorio.saveAndFlush(produto); 
     
     }
 
